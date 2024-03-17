@@ -5,6 +5,10 @@ const BlogSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    author: {
+      type: String,
+      required: true,
+    },
     tags: {
       type: Array,
       required: false,
