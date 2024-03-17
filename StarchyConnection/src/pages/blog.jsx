@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function Blog() {
     const [posts, setPosts] = useState([]);
@@ -21,7 +22,9 @@ function Blog() {
             <p>Here are all the blog posts</p>
             {posts.map(post => (
                 <div key={post.id}>
+                    <Link to={`/blog/${post.id}`}>{post.title}
                     <h2>{post.title}</h2>
+                    </Link>
                     <h3>{post.author}</h3>
                     <p>{post.body}</p>
                 </div>
