@@ -33,7 +33,6 @@ const add = () => {
   return (
     <div>
     <h1>Add a New Post</h1>
-    <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="title">Title:</label>
         <input
@@ -61,8 +60,9 @@ const add = () => {
           onChange={(e) => setAuthor(e.target.value)}
         />
       </div>
-      <button type="submit">Add Post</button>
-    </form>
+      <button onClick={handleSubmit}
+       >Add Post</button>
+    
   </div>
   );
 };
