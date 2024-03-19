@@ -21,14 +21,15 @@ function Blog() {
             <h1>Blog</h1>
             <p>Here are all the blog posts</p>
             {posts.map(post => (
-                <div key={post.id}>
-                    <Link to={`/blog/${post.id}`}>{post.title}
-                    <h2>{post.title}</h2>
-                    </Link>
-                    <h3>{post.author}</h3>
-                    <p>{post.body}</p>
-                </div>
-            ))}
+            <div key={post._id}>
+            <Link to={`/blog/${post._id}`}>
+            {post.title}
+            </Link>
+            
+            <h3>{post.author}</h3>
+        <p>{post.body}</p>
+    </div>
+))}
         </div>
     );
 }

@@ -1,36 +1,30 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import PostButtons from '../components/buttons';
 
+const Single = () => {  
+    const { id } = useParams();
+    const [post, setPost] = useState({});
 
-const single = () => {  
-  const { id } = useParams();
-  const [post, setPosts] = useState([]);
+    useEffect(() => {
+        axios.get(`http://localhost:3000/blogs/${id}`)
+            .then((response) => {
+                setPost(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, [id]); // Make sure to include id in the dependency array
 
-  useEffect(() => {
-    axios.get('http://localhost:3000/blogs/${id}')
-      .then((response) => {
-        setPosts(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [id]);
+    return (
+        <div>
+            <h1>Single</h1>
+            <p>Here is the single blog post</p>
+            <h2>{post.title}</h2>
+            <PostButtons id={post._id} />
+        </div>
+    );
+};
 
-  return (
-    <div>
-        <h1>{ 
-            post.title
-        }</h1>
-        <h3>{ 
-            post.author
-        }</h3>
-        <p>{ 
-            post.body
-        }</p>
-        
-    </div>
-  )
-}
-
-export default single
+export default Single;
