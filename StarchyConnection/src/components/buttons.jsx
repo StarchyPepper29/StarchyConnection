@@ -1,11 +1,14 @@
+import axios from 'axios';
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 
 const postbuttons = ({id}) => {
-  deletePost = () => {
+    const navigate = useNavigate();
+  const deletePost = () => {
     axios.delete(`http://localhost:3000/blogs/${id}`)
     .then((response) => {
-        console.log(response);
+        navigate('/blog');
     })
     .catch((error) => {
         console.log(error);
@@ -23,7 +26,7 @@ const postbuttons = ({id}) => {
                 <Link to={`edit`}  >
                     <button>Edit</button>
                 </Link>
-                    <button>Delete</button>
+                <button onClick={deletePost}>Delete</button>
                 
     </div>
   )
