@@ -1,14 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import '../theonlycss.css'
+import starchyConnectionLogo from '../StarchyConnectionEllipse.png'; // Import the image
 
-
-const home = () => {
+const Home = () => {
   return (
-    <div>
-      <h1>Home</h1>
-      <p>Welcome to Starchy Connection</p>
+    <div className='homediv'>
+      <img src={starchyConnectionLogo} alt="Starchy Connection Logo" width="200" height="200" />
+      <h1 className='MainTitle'>Welcome to Starchy Connection</h1>
       <Link to={`add`}>
-      <button>Add your own blog post</button>
+        <button>Add your own blog post</button>
       </Link>
       <Link to={`blog`}>
         <button>View all blog posts</button>
@@ -17,4 +18,4 @@ const home = () => {
   )
 }
 
-export default home
+export default Home;
